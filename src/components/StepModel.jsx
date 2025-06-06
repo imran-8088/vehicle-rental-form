@@ -13,7 +13,7 @@ import {
   Fade,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { getVehicleModels } from '../utils/api';  // import API helper
+import { getVehicleModels } from '../utils/api';  
 
 const StepModel = ({ formData, setFormData, onNext, onBack }) => {
   const [models, setModels] = useState([]);
@@ -29,7 +29,6 @@ const StepModel = ({ formData, setFormData, onNext, onBack }) => {
 
       setLoading(true);
       try {
-        // CALL API HERE to fetch vehicle models for selected vehicleType
         const data = await getVehicleModels(formData.vehicleType);
         setModels(data);
       } catch (err) {
@@ -85,7 +84,7 @@ const StepModel = ({ formData, setFormData, onNext, onBack }) => {
                     {models.map((model) => (
                       <FormControlLabel
                         key={model.id}
-                        value={model.model || model.name} // Adjust based on your API response
+                        value={model.model || model.name} 
                         control={<Radio />}
                         label={model.model || model.name}
                       />
